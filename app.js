@@ -8,6 +8,7 @@ const cors = require("cors");
 const errorHandler = require("./error");
 const connectServer = require("./server");
 const connectDB = require("./db")
+const screenshotRouter = require("./routes/screenshot");
 
 const app = express();
 
@@ -22,6 +23,8 @@ app.use(
 app.use(logger("dev"));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
+
+app.use("/api/screenshot", screenshotRouter);
 
 errorHandler(app);
 connectServer(app);
